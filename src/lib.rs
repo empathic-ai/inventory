@@ -562,6 +562,7 @@ macro_rules! __do_submit {
                 link_section = "__DATA,__mod_init_func,mod_init_funcs",
             )]
             #[cfg_attr(windows, link_section = ".CRT$XCU")]
+            #[cfg_attr(all(target_os = "espidf", target_arch = "xtensa"), link_section = ".ctors")]
             static __CTOR: unsafe extern "C" fn() = __ctor;
         };
     };
